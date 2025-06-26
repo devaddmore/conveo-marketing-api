@@ -81,7 +81,7 @@ app.post('/api/submit-form', async (req, res) => {
       });
     }
 
-    const result = await submitToHubSpot(formData);
+    const result = await submitToHubSpot(formData, formContext);
     
     res.json({
       success: true,
