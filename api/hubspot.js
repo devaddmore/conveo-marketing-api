@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const submitToHubSpot = async (data) => {
+const submitToHubSpot = async (data, context) => {
   try {
     const portalId = process.env.HUBSPOT_PORTAL_ID;
     const formGuid = process.env.HUBSPOT_FORM_GUID;
@@ -16,8 +16,9 @@ const submitToHubSpot = async (data) => {
       submittedAt: Date.now(),
       fields: formattedFields,
       context: {
-        pageUri: process.env.VERCEL_URL || 'http://localhost:3000',
-        pageName: 'API Form Submission'
+        hutk: context.hutk,
+        pageUri: context.pageUri,
+        pageName: context.pageName
       },
       legalConsentOptions: {
         consent: {

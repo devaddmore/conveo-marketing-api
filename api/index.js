@@ -71,6 +71,7 @@ app.post('/api/submit-form', async (req, res) => {
 
     // Extract data from the wrapper if it exists
     const formData = req.body.data || req.body;
+    const formContext = req.body.context || {};
 
     // Validate request body
     if (!formData || typeof formData !== 'object' || Object.keys(formData).length === 0) {
